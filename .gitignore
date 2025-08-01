@@ -1,0 +1,7 @@
+*.pdf
+*.pth
+logs/
+pretrained/
+__pycache__/
+res/
+trained_models/
