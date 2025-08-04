@@ -26,11 +26,11 @@ class NightReID(BaseImageDataset):
         super(NightReID, self).__init__()
         self.dataset_dir = osp.join(root, self.dataset_dir)
         self.train_dir = osp.join(self.dataset_dir, 'bounding_box_train')
-        # self.query_dir = osp.join(self.dataset_dir, 'query') # 528IDs
-        self.query_dir = osp.join(self.dataset_dir, 'query-1000') # 1000IDs
-        # self.gallery_dir = osp.join(self.dataset_dir, 'bounding_box_test') # 528IDs w/ Distractor
+        self.query_dir = osp.join(self.dataset_dir, 'query') # 528IDs
+        # self.query_dir = osp.join(self.dataset_dir, 'query-1000') # 1000IDs
+        self.gallery_dir = osp.join(self.dataset_dir, 'bounding_box_test') # 528IDs w/ Distractor
         # self.gallery_dir = osp.join(self.dataset_dir, 'bounding_box_test-528-noDistractors') # 528IDs w/o Distractor
-        self.gallery_dir = osp.join(self.dataset_dir, 'bounding_box_test_withDistractors') # 1000IDs w/ Distractor
+        # self.gallery_dir = osp.join(self.dataset_dir, 'bounding_box_test_withDistractors') # 1000IDs w/ Distractor
         # self.gallery_dir = osp.join(self.dataset_dir, 'bounding_box_test-1000-noDistractors') # 1000IDs w/o Distractor
 
         self._check_before_run()

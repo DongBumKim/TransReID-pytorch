@@ -31,15 +31,15 @@ if __name__ == '__main__':
     #     "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/nightreid/EDA.yml", help="path to config file", type=str
     # )
     
-    # Night600
-    parser.add_argument(
-        "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/night600/EDA.yml", help="path to config file", type=str
-    )
-    
-    # # Market1501
+    # # Night600
     # parser.add_argument(
-    #     "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/market1501/EDA.yml", help="path to config file", type=str
+    #     "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/night600/EDA.yml", help="path to config file", type=str
     # )
+    
+    # Market1501
+    parser.add_argument(
+        "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/market/EDA.yml", help="path to config file", type=str
+    )
     
     # MSMT17
     # parser.add_argument(
