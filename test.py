@@ -6,12 +6,25 @@ from model import make_model
 from processor import do_inference
 from utils.logger import setup_logger
 
+import random
+import numpy as np
+import torch
+
+def set_seed(seed):
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = True
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ReID Baseline Training")
 
 
-    # NightReID
+    # # NightReID
     # parser.add_argument(
     #     "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/nightreid/EDA_Test.yml", help="path to config file", type=str
     # )
@@ -42,6 +55,10 @@ if __name__ == "__main__":
         cfg.merge_from_file(args.config_file)
     cfg.merge_from_list(args.opts)
     cfg.freeze()
+
+
+    ## Set random seed for the same visualization
+    # set_seed(cfg.SOLVER.SEED)
 
     output_dir = cfg.OUTPUT_DIR
     if output_dir and not os.path.exists(output_dir):

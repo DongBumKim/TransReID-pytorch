@@ -14,6 +14,14 @@ import shutil
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
+
+
+def get_fixed_random_queries(num_queries, num_samples=5, seed=42):
+    rng = random.Random(seed)
+    indices = list(range(num_queries))
+    rng.shuffle(indices)
+    return indices[:num_samples]
+
 def do_train(cfg,
              model,
              center_criterion,
@@ -238,8 +246,8 @@ def do_inference(cfg,
     os.makedirs(worst_dir, exist_ok=True)
 
     # ---------- Get 5 random query indices ----------
-    random_query_indices = random.sample(range(num_query), 5)
-
+    # #random_query_indices = random.sample(range(num_query), 5)
+    random_query_indices = get_fixed_random_queries(num_query, 5, seed=cfg.SOLVER.SEED)
     # ---------- Get 5 worst-performing query indices ----------
     ranks = []
     for q_idx in range(num_query):
