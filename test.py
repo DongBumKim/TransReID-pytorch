@@ -9,9 +9,28 @@ from utils.logger import setup_logger
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ReID Baseline Training")
+
+
+    # NightReID
+    # parser.add_argument(
+    #     "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/nightreid/EDA_Test.yml", help="path to config file", type=str
+    # )
+    
+    # Night600
     parser.add_argument(
-        "--config_file", default="", help="path to config file", type=str
+        "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/night600/EDA_Test.yml", help="path to config file", type=str
     )
+    
+    # # Market1501
+    # parser.add_argument(
+    #     "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/market1501/EDA_Test.yml", help="path to config file", type=str
+    # )
+    
+    # MSMT17
+    # parser.add_argument(
+    #     "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/msmt17/EDA_Test.yml", help="path to config file", type=str
+    # )    
+
     parser.add_argument("opts", help="Modify config options using the command-line", default=None,
                         nargs=argparse.REMAINDER)
 

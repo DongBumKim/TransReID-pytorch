@@ -27,14 +27,14 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="ReID Baseline Training")
     
     # NightReID
-    parser.add_argument(
-        "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/nightreid/EDA.yml", help="path to config file", type=str
-    )
-    
-    # # Night600
     # parser.add_argument(
-    #     "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/night600/EDA.yml", help="path to config file", type=str
+    #     "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/nightreid/EDA.yml", help="path to config file", type=str
     # )
+    
+    # Night600
+    parser.add_argument(
+        "--config_file", default="/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/configs/night600/EDA.yml", help="path to config file", type=str
+    )
     
     # # Market1501
     # parser.add_argument(

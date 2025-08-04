@@ -19,8 +19,8 @@ INPUT:
   PROB: 0.5 # random horizontal flip
   RE_PROB: 0.5 # random erasing
   PADDING: 10
-  PIXEL_MEAN: [0.3958, 0.3729, 0.3715]
-  PIXEL_STD: [0.1305, 0.1203, 0.1146]
+  PIXEL_MEAN: [0.5, 0.5, 0.5]
+  PIXEL_STD: [0.5, 0.5, 0.5]
 
 DATASETS:
   NAMES: ('nightreid')
@@ -53,7 +53,7 @@ TEST:
   RE_RANKING: False
   # WEIGHT: 'nightreid.pth'
   # WEIGHT: '/workspace/Night_ReID/NightReID/pretrained/EDA_nightreid.pth'
-  WEIGHT: '/workspace/Night_ReID/NightReID/pretrained/EDA_night600.pth'
+  WEIGHT: '/workspace/Night_ReID/TransReID-SSL/transreid_pytorch/trained_models/nightreid/transformer_120.pth'
   # WEIGHT: '/workspace/Night_ReID/NightReID/trained_models/Market_1501/transformer_best_mAP.pth'
   # WEIGHT: '/workspace/Night_ReID/NightReID/trained_models/msmt17/transformer_best_mAP.pth'
   NECK_FEAT: 'before'
