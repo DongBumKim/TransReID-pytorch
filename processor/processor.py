@@ -198,7 +198,9 @@ def do_train(cfg,
 def do_inference(cfg,
                  model,
                  val_loader,
-                 num_query):
+                 num_query,
+                 num_samples=5 # deafult as 5 for number query to visualize
+                 ):
     device = "cuda"
     logger = logging.getLogger("transreid.test")
     logger.info("Enter inferencing")
@@ -247,7 +249,7 @@ def do_inference(cfg,
 
     # ---------- Get 5 random query indices ----------
     # #random_query_indices = random.sample(range(num_query), 5)
-    random_query_indices = get_fixed_random_queries(num_query, 5, seed=cfg.SOLVER.SEED)
+    random_query_indices = get_fixed_random_queries(num_query, num_samples, seed=cfg.SOLVER.SEED)
     # ---------- Get 5 worst-performing query indices ----------
     ranks = []
     for q_idx in range(num_query):
@@ -264,10 +266,11 @@ def do_inference(cfg,
         else:
             ranks.append(rank_idx[0])  # Position of correct match
 
-    worst_query_indices = np.argsort(ranks)[-5:].tolist()  # Highest rank = worst
+    worst_query_indices = np.argsort(ranks)[-num_samples:].tolist()  # Highest rank = worst
 
     # ---------- Combine and visualize ----------
-    selected_queries = list(set(random_query_indices + worst_query_indices))
+    # selected_queries = list(set(random_query_indices + worst_query_indices)) # if it overlaps, it deletes one
+    selected_queries = random_query_indices + worst_query_indices # just allow overlap
 
     for idx in selected_queries:
         q_img_path = query_paths[idx]
@@ -288,7 +291,7 @@ def do_inference(cfg,
             mode="random" if idx in random_query_indices else "worst"
         )
 
-    logger.info("Saved visualizations for 5 random and 5 worst queries.")
+    logger.info(f"Saved visualizations for {num_samples} random and {num_samples} worst queries.")
 
     return cmc[0], cmc[4]
 
