@@ -23,7 +23,7 @@ INPUT:
   PIXEL_STD: [0.5, 0.5, 0.5]
 
 DATASETS:
-  NAMES: ('nightreid')
+  NAMES: ('market1501')
   # ROOT_DIR: ('/data') # deafult
   ROOT_DIR: ('/workspace/Dataset')
 
@@ -60,4 +60,4 @@ TEST:
   NECK_FEAT: 'before'
   FEAT_NORM: 'yes'
 
-OUTPUT_DIR: './logs/nightreid'
+OUTPUT_DIR: './logs/market1501'
